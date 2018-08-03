@@ -9,13 +9,8 @@ package clase1;
  *
  * @author LabingXEON
  */
-public class Clase1 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public class Cursos {
+    private String Nombre;
+    private int Horas_Semanales;
     
 }
