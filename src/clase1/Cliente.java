@@ -5,6 +5,10 @@
  */
 package clase1;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -16,8 +20,8 @@ public class Cliente {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-   
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+    ArrayList<Curso> cursos = new ArrayList<Curso>();
         int op;
         
         System.out.println("Menu:\n ");
@@ -42,11 +46,28 @@ public class Cliente {
                 break;
                 
             case 2:
+                String Nombre;
+                int Horas_Semanales,Creditos,ID;
+                ArrayList<Curso> Cursos;
+                Scanner in= new Scanner(System.in);
+               for(int i = 0; i<5; i++){
                 System.out.println("Ingrese el nombre del curso:\n");
+                Nombre = in.nextLine();
                 System.out.println("Ingrese las horas semanales:\n");
+                Horas_Semanales = in.nextInt();
                 System.out.println("Ingrese el numero de creditos:\n");
+                Creditos = in.nextInt();
                 System.out.println("Ingrese el ID del curso:\n");
+                ID = in.nextInt();
                 
+                Curso c= new Curso(Nombre, Horas_Semanales, Creditos, ID);
+                
+                cursos.add(c);
+               }
+                RandomAccessFile raf = new RandomAccessFile("cursos.txt", "rw");
+
+         // write something in the file
+                raf.writeUTF(cursos.toString());
                 break;
                 
             case 3:
